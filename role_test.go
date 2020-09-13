@@ -1,4 +1,6 @@
-package bamboo_test
+// +build !integration
+
+package bamboo
 
 import (
 	"log"
@@ -6,15 +8,13 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
-
-	bamboo "github.com/rcarmstrong/go-bamboo"
 )
 
 func TestRolePermissionsList(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(rolePermissionsListStub))
 	defer ts.Close()
 
-	client := bamboo.NewSimpleClient(nil, "", "")
+	client := NewSimpleClient(nil, "", "")
 	client.SetURL(ts.URL)
 
 	for _, tc := range permissionsTestCases {
@@ -49,7 +49,7 @@ func TestSetLoggedInUserPermissions(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(setLoggedInUserPermissionsStub))
 	defer ts.Close()
 
-	client := bamboo.NewSimpleClient(nil, "", "")
+	client := NewSimpleClient(nil, "", "")
 	client.SetURL(ts.URL)
 
 	for _, tc := range permissionsTestCases {
@@ -84,7 +84,7 @@ func TestRemoveLoggedInUsersPermissions(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(removeLoggedInUsersPermissionsStub))
 	defer ts.Close()
 
-	client := bamboo.NewSimpleClient(nil, "", "")
+	client := NewSimpleClient(nil, "", "")
 	client.SetURL(ts.URL)
 
 	for _, tc := range permissionsTestCases {
@@ -119,7 +119,7 @@ func TestSetAnonymousReadPermission(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(setAnonymousReadPermissionStub))
 	defer ts.Close()
 
-	client := bamboo.NewSimpleClient(nil, "", "")
+	client := NewSimpleClient(nil, "", "")
 	client.SetURL(ts.URL)
 
 	for _, tc := range permissionsTestCases {
@@ -154,7 +154,7 @@ func TestRemoveAnonymousReadPermission(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(removeAnonymousReadPermissionStub))
 	defer ts.Close()
 
-	client := bamboo.NewSimpleClient(nil, "", "")
+	client := NewSimpleClient(nil, "", "")
 	client.SetURL(ts.URL)
 
 	for _, tc := range permissionsTestCases {
