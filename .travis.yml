@@ -10,7 +10,8 @@ before_install:
 script:
   - go get -u golang.org/x/lint/golint
   - $GOPATH/bin/golint -set_exit_status .
-  - go test -race -coverprofile=coverage.txt -covermode=atomic
+  - go test
+    #  - go test -race -coverprofile=coverage.txt -covermode=atomic
 
 after_success:
 
