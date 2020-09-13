@@ -1,3 +1,4 @@
 data/*
 .sw[po]
 .idea
+coverage.txt
