@@ -14,7 +14,6 @@ script:
   - $GOPATH/bin/golint -set_exit_status .
   - go test -v -covermode=count -coverprofile=coverage.out
   - $GOPATH/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN
-    # - go test
 
 after_success:
 
